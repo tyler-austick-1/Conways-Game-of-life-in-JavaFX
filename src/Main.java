@@ -1,7 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -12,14 +11,18 @@ public class Main extends Application {
     private BorderPane root;
     private GridPanel gridPanel;
 
+    private Simulator simulator;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+        simulator = new Simulator();
+
         root = new BorderPane();
-        gridPanel = new GridPanel(10,10); // REPLACE WITH SIMULATIONS GRID COLUMNS AND ROWS
+        gridPanel = new GridPanel(simulator, 10,10); // REPLACE WITH SIMULATIONS GRID COLUMNS AND ROWS
 
         root.setCenter(gridPanel);
 
