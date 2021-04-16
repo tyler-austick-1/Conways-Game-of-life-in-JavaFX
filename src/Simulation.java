@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Simulation {
 
-    public static final int COLUMNS = 20;
-    public static final int ROWS = 20;
+    public static final int COLUMNS = 10;
+    public static final int ROWS = 10;
 
     private final boolean[][] grid;
 
@@ -13,8 +13,20 @@ public class Simulation {
         grid = new boolean[COLUMNS][ROWS];
     }
 
+    public boolean[][] getGrid() {
+        return grid;
+    }
+
     public boolean getState(int x, int y) {
         return grid[x][y];
+    }
+
+    public void changeState(int x, int y) {
+        if (isWithinBounds(x, y)) {
+            grid[x][y] = !grid[x][y];
+        } else {
+            System.out.println("Cell (" + x + ", " + y + ") is out of bounds and could not change state");
+        }
     }
 
     public void setAlive(int x, int y) {
