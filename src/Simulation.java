@@ -21,6 +21,14 @@ public class Simulation {
         return grid[x][y];
     }
 
+    public void reset() {
+        for(int x = 0; x < COLUMNS; x++) {
+            for (int y = 0; y < ROWS; y++) {
+                grid[x][y] = false;
+            }
+        }
+    }
+
     public void changeState(int x, int y) {
         if (isWithinBounds(x, y)) {
             grid[x][y] = !grid[x][y];
@@ -77,15 +85,6 @@ public class Simulation {
             Boolean bottomLeft = grid[Math.floorMod((x+1), ROWS)][Math.floorMod((y-1), COLUMNS)];
             Boolean below = grid[Math.floorMod((x+1), ROWS)][y];
             Boolean bottomRight = grid[Math.floorMod((x+1), ROWS)][Math.floorMod((y+1), COLUMNS)];
-
-//            System.out.println("Top left: (" + Math.floorMod((i-1), rows) + ", " + Math.floorMod((j-1), columns) + ")");
-//            System.out.println("Above: (" + Math.floorMod((i-1), rows) + ", " + j + ")");
-//            System.out.println("Top right: (" + Math.floorMod((i-1), rows) + ", " + Math.floorMod((j+1), columns) + ")");
-//            System.out.println("Left: (" + i + ", " + Math.floorMod((j-1), columns) + ")");
-//            System.out.println("Right: (" + i + ", " + Math.floorMod((j+1), columns) + ")");
-//            System.out.println("Bottom Left: (" + Math.floorMod((i+1), rows) + ", " + Math.floorMod((j-1), columns) + ")");
-//            System.out.println("Below: (" + Math.floorMod((i+1), rows) + ", " + j + ")");
-//            System.out.println("Bottom right: (" + Math.floorMod((i+1), rows) + ", " + Math.floorMod((j+1), columns) + ")");
 
             List<Boolean> calculatedCells = Arrays.asList(topLeft, above, topRight, left, right, bottomLeft, below, bottomRight);
 

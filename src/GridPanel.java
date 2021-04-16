@@ -4,17 +4,32 @@ import javafx.scene.layout.GridPane;
 
 public class GridPanel extends GridPane {
 
+    private int rows;
+    private int columns;
+
     private Simulator simulator;
 
     public GridPanel(Simulator simulator, int rows, int columns) {
         this.simulator = simulator;
-        createGrid(rows, columns);
+        this.rows = rows;
+        this.columns = columns;
+
+        createGrid();
     }
 
-    private void createGrid(int rows, int columns) {
+    private void createGrid() {
         for (int x = 0; x < columns; x++) {
             for (int y = 0; y < rows; y++) {
                 this.add(new CellPane(simulator, x, y), x, y); // j is column, i is row (they are reversed in the add method)
+            }
+        }
+    }
+
+    public void reset() {
+        for (int x = 0; x < columns; x++) {
+            for (int y = 0; y < rows; y++) {
+                CellPane cellPane = (CellPane) getNodeByIndices(x, y);
+                cellPane.setAlive(false);
             }
         }
     }
