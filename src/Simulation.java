@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Simulation {
 
-    public static final int COLUMNS = 10;
-    public static final int ROWS = 10;
+    public static final int COLUMNS = 30;
+    public static final int ROWS = 15;
 
     private final boolean[][] grid;
 
@@ -77,14 +77,14 @@ public class Simulation {
         List<Boolean> neighbours = new ArrayList<>();
 
         if (isWithinBounds(x, y)) {
-            Boolean topLeft = grid[Math.floorMod((x-1), ROWS)][Math.floorMod((y-1), COLUMNS)];
-            Boolean above = grid[Math.floorMod((x-1), ROWS)][y];
-            Boolean topRight = grid[Math.floorMod((x-1), ROWS)][Math.floorMod((y+1), COLUMNS)];
-            Boolean left = grid[x][Math.floorMod((y-1), COLUMNS)];
-            Boolean right = grid[x][Math.floorMod((y+1), COLUMNS)];
-            Boolean bottomLeft = grid[Math.floorMod((x+1), ROWS)][Math.floorMod((y-1), COLUMNS)];
-            Boolean below = grid[Math.floorMod((x+1), ROWS)][y];
-            Boolean bottomRight = grid[Math.floorMod((x+1), ROWS)][Math.floorMod((y+1), COLUMNS)];
+            Boolean topLeft = grid[Math.floorMod((x-1), COLUMNS)][Math.floorMod((y-1), ROWS)];
+            Boolean above = grid[Math.floorMod((x-1), COLUMNS)][y];
+            Boolean topRight = grid[Math.floorMod((x-1), COLUMNS)][Math.floorMod((y+1), ROWS)];
+            Boolean left = grid[x][Math.floorMod((y-1), ROWS)];
+            Boolean right = grid[x][Math.floorMod((y+1), ROWS)];
+            Boolean bottomLeft = grid[Math.floorMod((x+1), COLUMNS)][Math.floorMod((y-1), ROWS)];
+            Boolean below = grid[Math.floorMod((x+1), COLUMNS)][y];
+            Boolean bottomRight = grid[Math.floorMod((x+1), COLUMNS)][Math.floorMod((y+1), ROWS)];
 
             List<Boolean> calculatedCells = Arrays.asList(topLeft, above, topRight, left, right, bottomLeft, below, bottomRight);
 

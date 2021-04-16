@@ -51,7 +51,11 @@ public class CellPane extends StackPane {
     }
 
     private void handleMouseHover(MouseEvent mouseEvent) {
-        cell.setFill(Color.LIGHTGRAY);
+        if (!alive) {
+            cell.setFill(Color.LIGHTGRAY);
+        } else {
+            cell.setFill(Color.DARKGRAY);
+        }
     }
 
     private void handleMouseExit(MouseEvent mouseEvent) {
