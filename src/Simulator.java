@@ -9,31 +9,33 @@ public class Simulator {
         simulation = new Simulation();
     }
 
-//    private void step() {
-//        List<Cell> cellsToChangeState = new ArrayList<>();
-//
-//        for (int i = 0; i < gridRows; i++) {
-//            for (int j = 0; j < gridColumns; j++) {
-//                Cell currentCell = grid.getCell(i, j);
-//                List<Cell> cellNeighbours = grid.getNeighbours(i, j);
-//                int aliveNeighbours = grid.numberOfAliveNeighbours(cellNeighbours);
-//
-//
-//                if (currentCell.isAlive() && (aliveNeighbours < 2 || aliveNeighbours > 3)) {
-//                    cellsToChangeState.add(currentCell);
-//                } else if (!currentCell.isAlive() && (aliveNeighbours == 3)) {
-//                    cellsToChangeState.add(currentCell);
-//                }
-//            }
-//        }
-//
-//        changeCellsToNewState(cellsToChangeState);
-//    }
-//
-//    private void changeCellsToNewState(List<Cell> cells) {
-//        for (Cell cell : cells) {
-//            cell.changeState();
-//        }
-//    }
+    public Simulation getSimulation() {
+        return simulation;
+    }
 
+    public void step() {
+        List<int[]> cellsToChangeState = new ArrayList<>();
+
+        for (int x = 0; x < Simulation.COLUMNS; x++) {
+            for (int y = 0; y < Simulation.ROWS; y++) {
+                boolean currentCell = simulation.getState(x, y);
+                int aliveNeighbours = simulation.numberOfAliveNeighbours(x, y);
+
+                if (currentCell && (aliveNeighbours < 2 || aliveNeighbours > 3)) {
+                    int[] coordinates = {x, y};
+                    cellsToChangeState.add(coordinates);
+                } else if (!currentCell && (aliveNeighbours == 3)) {
+                    int[] coordinates = {x, y};
+                    cellsToChangeState.add(coordinates);
+                }
+            }
+        }
+        changeCellsToNewState(cellsToChangeState);
+    }
+
+    private void changeCellsToNewState(List<int[]> cells) {
+        for (int[] cell : cells) {
+            simulation.changeState(cell[0], cell[1]);
+        }
+    }
 }

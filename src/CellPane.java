@@ -10,12 +10,18 @@ public class CellPane extends StackPane {
     private static final Color aliveColor = Color.BLACK;
     private static final Color deadColor = Color.WHITE;
 
+    private int xPosition;
+    private int yPosition;
+
     private boolean alive;
 
     private Rectangle cell;
 
-    public CellPane(Simulator simulator) {
+    public CellPane(Simulator simulator, int xPosition, int yPosition) {
         this.simulator = simulator;
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+
         alive = false;
 
         cell = new Rectangle(50, 50);
@@ -40,6 +46,7 @@ public class CellPane extends StackPane {
 
     private void handleMouseInput(MouseEvent mouseEvent) {
         alive = !alive;
+        simulator.getSimulation().changeState(xPosition, yPosition);
         setColor();
     }
 
