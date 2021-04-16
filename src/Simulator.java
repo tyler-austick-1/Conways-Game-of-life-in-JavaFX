@@ -5,8 +5,19 @@ public class Simulator {
 
     private Simulation simulation;
 
+    private boolean editable;
+
     public Simulator() {
         simulation = new Simulation();
+        editable = true;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     public Simulation getSimulation() {

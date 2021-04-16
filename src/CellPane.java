@@ -30,7 +30,7 @@ public class CellPane extends StackPane {
 
         getChildren().addAll(cell);
 
-        this.setOnMouseClicked(this::handleMouseInput);
+        this.setOnMousePressed(this::handleMouseInput);
         this.setOnMouseEntered(this::handleMouseHover);
         this.setOnMouseExited(this::handleMouseExit);
     }
@@ -45,21 +45,31 @@ public class CellPane extends StackPane {
     }
 
     private void handleMouseInput(MouseEvent mouseEvent) {
+        if (simulator.isEditable()) {
+            updateCell();
+        }
+    }
+
+    public void updateCell() {
         alive = !alive;
         simulator.getSimulation().changeState(xPosition, yPosition);
         setColor();
     }
 
     private void handleMouseHover(MouseEvent mouseEvent) {
-        if (!alive) {
-            cell.setFill(Color.LIGHTGRAY);
-        } else {
-            cell.setFill(Color.DARKGRAY);
+        if (simulator.isEditable()) {
+            if (!alive) {
+                cell.setFill(Color.LIGHTGRAY);
+            } else {
+                cell.setFill(Color.DARKGRAY);
+            }
         }
     }
 
     private void handleMouseExit(MouseEvent mouseEvent) {
-        setColor();
+        if (simulator.isEditable()) {
+            setColor();
+        }
     }
 
     private void setColor() {
