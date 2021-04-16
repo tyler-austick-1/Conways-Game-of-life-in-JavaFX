@@ -44,8 +44,7 @@ public class CellPane extends StackPane {
     }
 
     private void handleMouseHover(MouseEvent mouseEvent) {
-        cell.setFill(Color.GRAY);
-        cell.setStroke(Color.BLACK);
+        cell.setFill(Color.LIGHTGRAY);
     }
 
     private void handleMouseExit(MouseEvent mouseEvent) {
@@ -53,11 +52,10 @@ public class CellPane extends StackPane {
     }
 
     private void setColor() {
-        cell.setStroke(Color.BLACK);
+        cell.setStroke(Color.GRAY);
 
         if (alive) {
             cell.setFill(aliveColor);
-            cell.setStroke(Color.GRAY);
         } else {
             cell.setFill(deadColor);
         }

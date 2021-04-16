@@ -26,7 +26,7 @@ public class Main extends Application {
 
         root.setCenter(gridPanel);
 
-        Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+        Scene scene = new Scene(root);
 
         stage.setScene(scene);
         stage.show();
