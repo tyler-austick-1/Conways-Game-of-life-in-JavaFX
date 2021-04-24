@@ -1,6 +1,5 @@
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 public class GridPanel extends GridPane {

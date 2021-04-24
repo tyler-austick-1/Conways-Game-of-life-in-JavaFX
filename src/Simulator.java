@@ -29,13 +29,13 @@ public class Simulator {
 
         for (int x = 0; x < Simulation.COLUMNS; x++) {
             for (int y = 0; y < Simulation.ROWS; y++) {
-                boolean currentCell = simulation.getState(x, y);
+                boolean currentCellAlive = simulation.getState(x, y);
                 int aliveNeighbours = simulation.numberOfAliveNeighbours(x, y);
 
-                if (currentCell && (aliveNeighbours < 2 || aliveNeighbours > 3)) {
+                if (currentCellAlive && (aliveNeighbours < 2 || aliveNeighbours > 3)) {
                     int[] coordinates = {x, y};
                     cellsToChangeState.add(coordinates);
-                } else if (!currentCell && (aliveNeighbours == 3)) {
+                } else if (!currentCellAlive && (aliveNeighbours == 3)) {
                     int[] coordinates = {x, y};
                     cellsToChangeState.add(coordinates);
                 }

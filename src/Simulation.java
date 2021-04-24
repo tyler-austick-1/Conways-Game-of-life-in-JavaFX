@@ -5,7 +5,7 @@ import java.util.List;
 public class Simulation {
 
     public static final int COLUMNS = 30;
-    public static final int ROWS = 15;
+    public static final int ROWS = 17;
 
     private final boolean[][] grid;
 
